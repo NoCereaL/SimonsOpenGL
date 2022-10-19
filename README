@@ -1,0 +1,23 @@
+OpenGL C++ Projects
+
+*Instructions*
+
+1.  Open project in Visual Studios
+2.  Right click on the project in the solution explorer
+3.  Follow directions Below:
+  1. Click C++ Additional Indludes Directories
+  2. Configuration Properties 
+    > 
+    C/C++/General/Additional 
+    Include Directories
+  3. Paste Path of Includes folder
+  4. Click Linker and do the same for Libs folder
+  5. Configuration Properties 
+    > 
+    Linker/General/Additional 
+    Library Directories
+  6. Click Input (edit) paste the following:
+     opengl32.lib 
+     glfw3.lib
+     glew32s.lib
+4. Project is now Ready
