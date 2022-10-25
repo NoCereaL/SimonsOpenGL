@@ -68,39 +68,40 @@ int main(void)
 	};
 
 	GLfloat exeFiveSquareOne[] = {
-		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Left
-		 1.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
-		 0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
+		 0.25f, 0.0f, 0.0f,  1.0f, 0.0f, 1.0f,// Left
+		 1.25f, 0.0f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
+		 0.25f, 1.0f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
 
-		 0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
-		 1.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// TopRight			//Exe 2
-		 1.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
+		 0.25f, 1.0f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
+		 1.25f, 1.0f, 0.0f,  1.0f, 0.0f, 1.0f,// TopRight			//Exe 2
+		 1.25f, 0.0f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
 	};
 
 	GLfloat exeFiveSquareTwo[] = {
-		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Left
-		 1.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
-		 0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
+		 -1.25f, 0.0f, 0.0f,  1.0f, 0.0f, 0.0f,// Left
+		 -0.25f, 0.0f, 0.0f,  1.0f, 0.0f, 0.0f,// Right
+		 -1.25f, 1.0f, 0.0f,  1.0f, 0.0f, 0.0f,// Top 
 
-		 0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
-		 1.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// TopRight			//Exe 2
-		 1.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
+		 -1.25f, 1.0f, 0.0f,  1.0f, 0.0f, 0.0f,// Top 
+		 -0.25f, 1.0f, 0.0f,  1.0f, 0.0f, 0.0f,// TopRight			//Exe 2
+		 -0.25f, 0.0f, 0.0f,  1.0f, 0.0f, 0.0f,// Right
 	};
 
 	GLfloat exeFiveSquareThree[] = {
-		 0.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Left
-		 1.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
-		 0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
+		 -0.5f, -1.5f, 0.0f,  0.0f, 0.0f, 1.0f,// Left
+		 0.5f, -1.5f, 0.0f,  0.0f, 0.0f, 1.0f,// Right
+		 -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,// Top 
 
-		 0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Top 
-		 1.0f, 0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// TopRight			//Exe 2
-		 1.0f, -0.5f, 0.0f,  1.0f, 0.0f, 1.0f,// Right
+		 -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,// Top 
+		 0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,// TopRight			//Exe 2
+		 0.5f, -1.5f, 0.0f,  0.0f, 0.0f, 1.0f,// Right
 	};
 
-	GLuint VBOs[2], VAOs[2];
-	glGenVertexArrays(2, VAOs); // the address-of operator (&) is not needed here, as the array name is a pointer type
-	glGenBuffers(2, VBOs);
+	GLuint VBOs[3], VAOs[3];
+	glGenVertexArrays(3, VAOs); // the address-of operator (&) is not needed here, as the array name is a pointer type
+	glGenBuffers(3, VBOs);
 
+	/*
     // ================================
     // First Triangle setup
     // ===============================
@@ -125,6 +126,44 @@ int main(void)
 	glEnableVertexAttribArray(1);
 	
     glBindVertexArray(0);
+	*/
+
+	// ================================
+	// First Square setup
+	// ===============================
+	glBindVertexArray(VAOs[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(exeFiveSquareOne), exeFiveSquareOne, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);	// Vertex attributes stay the same, note that the stride is 6*sizeof(GLloat)			
+	glEnableVertexAttribArray(0);  // set attribute index of the position attribute to 0 in the vertex shader
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat))); // Color attribute
+	glEnableVertexAttribArray(1);
+
+	glBindVertexArray(0);
+	// ================================
+	// Second Square setup
+	// ===============================
+	glBindVertexArray(VAOs[1]);	// Note that we bind to a different VAO now
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);	// And a different VBO
+	glBufferData(GL_ARRAY_BUFFER, sizeof(exeFiveSquareTwo), exeFiveSquareTwo, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);	// Vertex attributes stay the same	
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat))); // Color attribute
+	glEnableVertexAttribArray(1);
+
+	glBindVertexArray(0);
+	// ================================
+	// Third Square setup
+	// ===============================
+	glBindVertexArray(VAOs[2]);	// Note that we bind to a different VAO now
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[2]);	// And a different VBO
+	glBufferData(GL_ARRAY_BUFFER, sizeof(exeFiveSquareThree), exeFiveSquareThree, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);	// Vertex attributes stay the same	
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat))); // Color attribute
+	glEnableVertexAttribArray(1);
+
+	glBindVertexArray(0);
 
 	//++++++++++Build and compile shader program+++++++++++++++++++++
 	GLuint shaderProgram = initShader("vert.glsl","frag.glsl");
@@ -141,34 +180,59 @@ int main(void)
 
 		// Draw the first Triangle
 		glm::mat4 transform;
-		transform = glm::translate(transform, glm::vec3(-0.7f, 0.0f, 0.0f));		//Exe 4
-		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-		transform = glm::translate(transform, glm::vec3(0.5f, 0.0f, 0.0f));			//Exe 4
-
+		transform = glm::translate(transform, glm::vec3(0.5f, 0.25f, 0.0f));		//Exe 4					//Translate Shape transform
+		transform = glm::rotate(transform, -(GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+		transform = glm::translate(transform, glm::vec3(-0.375f, -0.25f, 0.0f));			//Exe 4			//Translate Rotation Center
+		
 		/*GLfloat dx = (GLfloat)(glm::abs(glm::sin(glfwGetTime())) * 0.5);			//Exe 3
 		transform = glm::translate(transform, glm::vec3(0.0f, dx, 0.0f));*/	
+
+		transform = glm::scale(transform, glm::vec3(0.5f, 0.5f, 0.5f));
 		
 		// Get matrix's uniform location and set matrix
 		transformLoc = glGetUniformLocation(shaderProgram, "transform");
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
 		glBindVertexArray(VAOs[0]);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		// Draw the second Triangle
 		transform = glm::mat4();
-		transform = glm::translate(transform, glm::vec3(0.7f, 0.0f, 0.0f));			//Exe 4
+		/*transform = glm::translate(transform, glm::vec3(0.7f, 0.0f, 0.0f));			//Exe 4
 		transform = glm::rotate(transform, -(GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 0.0f, 1.0f));		//Exe 2
 		transform = glm::translate(transform, glm::vec3(-0.5f, 0.0f, 0.0f));		//Exe 4
-
+		*/
+		transform = glm::translate(transform, glm::vec3(-0.5f, 0.25f, 0.0f));		//Exe 4					//Translate Shape transform
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 0.5f, glm::vec3(0.0f, 0.0f, 1.0f));
+		transform = glm::translate(transform, glm::vec3(0.375f, -0.25f, 0.0f));			//Exe 4			//Translate Rotation Center
 		/*GLfloat dx2 = (GLfloat)(glm::abs(glm::sin(glfwGetTime())) * 0.5);			//Exe 3
 		transform = glm::translate(transform, glm::vec3(dx2, 0.0f, 0.0f));*/
+
+		transform = glm::scale(transform, glm::vec3(0.5f, 0.5f, 0.5f));
 		
 		// Get matrix's uniform location and set matrix
 		transformLoc = glGetUniformLocation(shaderProgram, "transform");
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
 		glBindVertexArray(VAOs[1]);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		// 
+		// Draw the third Triangle
+		transform = glm::mat4();
+		transform = glm::translate(transform, glm::vec3(0.0f, -0.5f, 0.0f));		//Exe 4					//Translate Shape transform
+		transform = glm::rotate(transform, (GLfloat)glfwGetTime() * 1.5f, glm::vec3(0.0f, 0.0f, 1.0f));
+		transform = glm::translate(transform, glm::vec3(0.0f, 0.5f, 0.0f));			//Exe 4			//Translate Rotation Center
+		/*GLfloat dx2 = (GLfloat)(glm::abs(glm::sin(glfwGetTime())) * 0.5);			//Exe 3
+		transform = glm::translate(transform, glm::vec3(dx2, 0.0f, 0.0f));*/
+
+		transform = glm::scale(transform, glm::vec3(0.5f, 0.5f, 0.5f));
+		
+		// Get matrix's uniform location and set matrix
+		transformLoc = glGetUniformLocation(shaderProgram, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+
+		glBindVertexArray(VAOs[2]);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
