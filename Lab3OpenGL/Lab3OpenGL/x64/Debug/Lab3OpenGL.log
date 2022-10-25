@@ -1,2 +1,8 @@
 ﻿  main.cpp
-  Lab3OpenGL.vcxproj -> C:\Users\smoya\source\repos\Lab3OpenGL\x64\Debug\Lab3OpenGL.exe
+  shader.cpp
+  Generating Code...
+  LINK : G:\GitProjects\SimonsOpenGL\Lab3OpenGL\x64\Debug\Lab3OpenGL.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'G:\GitProjects\SimonsOpenGL\Lab3OpenGL\x64\Debug\vc120.pdb'; linking object as if no debug info
+  Lab3OpenGL.vcxproj -> G:\GitProjects\SimonsOpenGL\Lab3OpenGL\x64\Debug\Lab3OpenGL.exe
