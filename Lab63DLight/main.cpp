@@ -164,14 +164,40 @@ int main(void)
 		//Ex1 move Cub (0.5,0.5,0.5)
 		model = glm::translate(model, glm::vec3(0.5f, 0.5f, 0.5f));
 
-		//Ex2 Draw second cube
-		glBindVertexArray(VAO);
-		glm::mat4 model2;
-		model2 = glm::mat4();
-		model2 = glm::rotate(model2, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 72);
+
+		//Ex2 Draw second cube
+		/*glBindVertexArray(VAO);
+		glm::mat4 model2;
+		model2 = glm::translate(model2, glm::vec3(-0.5f,-0.5f,-0.5f));
+		model2 = glm::rotate(model2, -(GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model2));
+		glDrawArrays(GL_TRIANGLES, 0, 72);
+		*/
+
+		//Ex3 Draw Second Cube Still
+		/*glBindVertexArray(VAO);
+		glm::mat4 model2;
+		model2 = glm::translate(model2, glm::vec3(-0.5f, -0.5f, -0.5f));
+		model2 = glm::rotate(model2, -0.785f, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model2));
+		glDrawArrays(GL_TRIANGLES, 0, 72);
+		*/
+
+		//Ex4 Draw Second Cube Different Size
+		glBindVertexArray(VAO);
+		glm::mat4 model2;
+		model2 = glm::scale(model, glm::vec3(0.5f,0.5f,0.5f));
+		model2 = glm::translate(model2, glm::vec3(-1.5f, -1.5f, -1.5f));
+		model2 = glm::rotate(model2, -(GLfloat)glfwGetTime() * 1.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+		model2 = glm::translate(model2, glm::vec3(-1.5f, -1.5f, -1.5f));
+
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model2));
+		glDrawArrays(GL_TRIANGLES, 0, 72);
+
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
