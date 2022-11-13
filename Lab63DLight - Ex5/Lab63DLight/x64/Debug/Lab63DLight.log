@@ -1,0 +1,3 @@
+﻿  main.cpp
+G:\GitProjects\SimonsOpenGL\Lab63DLight - Ex5\main.cpp(136,21): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  Lab63DLight.vcxproj -> G:\GitProjects\SimonsOpenGL\Lab63DLight - Ex5\x64\Debug\Lab63DLight.exe
