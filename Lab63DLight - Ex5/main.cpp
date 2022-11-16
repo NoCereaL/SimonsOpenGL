@@ -135,8 +135,8 @@ int main(void)
 
 		time = glfwGetTime();
 		//Ex5 translate camera back and forth
-		//GLfloat dx = glm::abs(glm::sin(time) * 1.5f);
-		//cameraPos = glm::vec3(0.0f, 0.0f, dx+2.0f);
+		GLfloat dx2 = glm::abs(glm::sin(time) * 1.5f);
+		cameraPos = glm::vec3(0.0f, 0.0f, dx2+2.0f);
 
 		//Ex5 translate up and down
 		//GLfloat dx = glm::abs(glm::sin(time) * 0.5f);
@@ -208,7 +208,7 @@ int main(void)
 		*/
 
 		//Ex4 Draw Second Cube Different Size
-		/*glBindVertexArray(VAO);
+		glBindVertexArray(VAO);
 		glm::mat4 model2;
 		model2 = glm::scale(model, glm::vec3(0.5f,0.5f,0.5f));
 		model2 = glm::translate(model2, glm::vec3(-1.5f, -1.5f, -1.5f));
@@ -217,7 +217,7 @@ int main(void)
 
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model2));
 		glDrawArrays(GL_TRIANGLES, 0, 72);
-		*/
+		
 
 		glBindVertexArray(0);
 
